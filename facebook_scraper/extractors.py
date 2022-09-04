@@ -200,6 +200,7 @@ class PostExtractor:
                 raise
             except Exception as ex:
                 import traceback
+                print(traceback.format_exc())
                 log_warning(traceback.format_exc())
                 log_warning("Exception while running %s: %r", method.__name__, ex)
 
