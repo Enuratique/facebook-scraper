@@ -199,6 +199,8 @@ class PostExtractor:
             except exceptions.TemporarilyBanned:
                 raise
             except Exception as ex:
+                import traceback
+                log_warning(traceback.format_exc())
                 log_warning("Exception while running %s: %r", method.__name__, ex)
 
         has_more = self.more_url_regex.search(self.element.html)
