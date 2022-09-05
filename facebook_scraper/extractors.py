@@ -200,8 +200,8 @@ class PostExtractor:
                 raise
             except Exception as ex:
                 import traceback
-                print(traceback.format_exc())
-                log_warning(traceback.format_exc())
+                #print(traceback.format_exc())
+                #log_warning(traceback.format_exc())
                 log_warning("Exception while running %s: %r", method.__name__, ex)
 
         has_more = self.more_url_regex.search(self.element.html)
@@ -272,10 +272,21 @@ class PostExtractor:
         # This ensures the full content can be read.
 
         element = self.element
+        
+        print("")
+        print("Initial self.element")
+        print(element)
+        print("")
 
         has_more = self.more_url_regex.search(element.html)
         if has_more and self.full_post_html:
+            print("It has more and full_post_html is not None")
             element = self.full_post_html.find('.story_body_container', first=True)
+        
+        print("")
+        print("After has more check, this is element")
+        print(element)
+        print("")
 
         nodes = element.find('p, header, span[role=presentation]')
         if nodes and len(nodes) > 1:
