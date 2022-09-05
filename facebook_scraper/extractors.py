@@ -285,7 +285,7 @@ class PostExtractor:
             print(element.html)
             print("")
             print("Full Post HTML:")
-            print(self.full_post_html)
+            print(self.full_post_html.html)
             print("")
             element = self.full_post_html.find('.story_body_container', first=True)
         
