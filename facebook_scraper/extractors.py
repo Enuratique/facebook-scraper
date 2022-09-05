@@ -273,20 +273,26 @@ class PostExtractor:
 
         element = self.element
         
-        print("")
-        print("Initial self.element")
-        print(element)
-        print("")
+        #print("")
+        #print("Initial self.element")
+        #print(element)
+        #print("")
 
         has_more = self.more_url_regex.search(element.html)
         if has_more and self.full_post_html:
-            print("It has more and full_post_html is not None")
+            print("")
+            print("Element HTML:")
+            print(element.html)
+            print("")
+            print("Full Post HTML:")
+            print(self.full_post_html)
+            print("")
             element = self.full_post_html.find('.story_body_container', first=True)
         
-        print("")
-        print("After has more check, this is element")
-        print(element)
-        print("")
+        #print("")
+        #print("After has more check, this is element")
+        #print(element)
+        #print("")
 
         nodes = element.find('p, header, span[role=presentation]')
         if nodes and len(nodes) > 1:
